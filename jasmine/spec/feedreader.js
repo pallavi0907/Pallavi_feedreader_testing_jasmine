@@ -69,7 +69,7 @@ asynchronous so this test will require the use of Jasmine's beforeEach and
              });
            });
            it("define if feed has atleast a single entry",function(){
-             expect($(".feed.entry")).toBeDefined();
+             expect($(".feed.entry").length).toBe(0);
            });
          });
 
@@ -77,22 +77,20 @@ asynchronous so this test will require the use of Jasmine's beforeEach and
 changes. Remember, loadFeed() is asynchronous.*/
 
          describe("New Feed Selection",function(){
-           var entriesStart,entriesEnd;
+           var firstFeed,secondFeed;
 
            beforeEach(function(done){
-             $(".feed").empty();
              loadFeed(0,function(){
-               entriesStart=$(".feed").find(allFeeds.url);
-               done();
-             });
-               loadFeed(1,function(){
-                 entriesEnd=$(".feed").find(allFeeds.url);
+               firstFeed=$(".feed").html();
+             loadFeed(1,function(){
+               secondFeed=$(".feed").html();
                  done();
            });
 
          });
+       });
          it("new feed is different than old one", function(){
-           expect(entriesStart).not.toBe(entriesEnd);
+           expect(firstFeed).not.toEqual(secondFeed);
          });
        });
 
