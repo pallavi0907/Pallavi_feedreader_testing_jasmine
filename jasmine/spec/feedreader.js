@@ -69,7 +69,7 @@ asynchronous so this test will require the use of Jasmine's beforeEach and
              });
            });
             it("define if feed has atleast a single entry",function(){
-              expect($(".feed").length).toBeGreaterThan(0);
+              expect($(".feed .entry").length).toBeGreaterThan(0);
             });
          });
 
