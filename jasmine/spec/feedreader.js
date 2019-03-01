@@ -68,10 +68,12 @@ asynchronous so this test will require the use of Jasmine's beforeEach and
                done();
              });
            });
-           it("define if feed has atleast a single entry",function(){
-             expect($(".feed.entry").length).toBe(0);
-           });
+            it("define if feed has atleast a single entry",function(){
+              expect($(".feed").length).toBeGreaterThan(0);
+            });
          });
+
+
 
 /*when a new feed is loaded by the loadFeed function that the content actually
 changes. Remember, loadFeed() is asynchronous.*/
